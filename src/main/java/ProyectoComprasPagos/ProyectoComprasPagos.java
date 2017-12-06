@@ -22,6 +22,7 @@ public class ProyectoComprasPagos {
 
         ConexionMySQL mysql = new ConexionMySQL();
         Connection cn = mysql.Conectar();
+        
 
         VentanaPrincipalPanel ventana = new VentanaPrincipalPanel();
         ventana.setVisible(true);
