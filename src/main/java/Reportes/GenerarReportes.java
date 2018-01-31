@@ -59,12 +59,44 @@ public class GenerarReportes {
             JOptionPane.showMessageDialog(null,"Error al mostrar el reporte " + e);
         
         }
-                
-        
-        
-        
-        
+      
+    }
     
+    
+     public void reportePlanVariable(int idplanVariable)
+    {
+           // System.out.println("da: "+ cn);
+        
+          try {
+            System.out.println("entra5");
+           // 
+         //  String direc="ReportePlanFijo.jasper"; 
+           // JasperReport reportes= (JasperReport) JRLoader.loadObject (getClass().getResource("\\Reportes\\ReportePlanFijo.jasper"));
+         //  JasperReport jasper= (JasperReport) JRLoader.loadObject(getClass().getResource("ReportePlanFijo.jasper"));
+           JasperReport reportes = JasperCompileManager.compileReport("C:\\Users\\usuario\\Documents\\NetBeansProjects\\ProyectoBonificacionesxxx\\ProyectoBonificaciones\\src\\main\\java\\Reportes\\ReportePlanVariable.jrxml");
+           //JasperReport jr = null;
+           //URL in= this.getClass().getResource("\\Reportes\\ReportePlanFijo.jasper");
+          // jr=(JasperReport) JRLoader.loadObject(in);
+           Map parametro= new HashMap();
+            parametro.clear();
+            parametro.put("idplanfijo", idplanVariable);
+            System.out.println("entra6");
+            System.out.println(parametro.get("idplanVariable"));
+            JasperPrint j = JasperFillManager.fillReport(reportes, parametro, this.cn);
+             System.out.println("entra7");
+            JasperViewer jv= new JasperViewer(j, false);
+             System.out.println("entra8");
+            jv.setTitle("Reporte");
+             System.out.println("entra9");
+            jv.setVisible(true);
+           
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al mostrar el reporte " + e);
+        
+        }
+      
     }
     
     

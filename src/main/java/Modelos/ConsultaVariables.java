@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,6 +41,7 @@ public class ConsultaVariables extends javax.swing.JFrame {
 
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItemImprimir = new javax.swing.JMenuItem();
+        jMenuItemArticulos = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtBuscarPlan = new javax.swing.JTextField();
@@ -55,6 +57,14 @@ public class ConsultaVariables extends javax.swing.JFrame {
             }
         });
         jPopupMenu2.add(jMenuItemImprimir);
+
+        jMenuItemArticulos.setText("Ver Articulos");
+        jMenuItemArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemArticulosActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(jMenuItemArticulos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,14 +179,16 @@ public class ConsultaVariables extends javax.swing.JFrame {
     private void jMenuItemImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImprimirActionPerformed
         // TODO add your handling code here:
         int filasel;
-        int idplanfijo=0;
+        int idplanVariable=0;
         String idString="";
-        GenerarReportes repFijo= new GenerarReportes(); 
+        GenerarReportes repVariable= new GenerarReportes(); 
         modelo= (DefaultTableModel) tblConsultaPlanes.getModel();
         try
            {
                System.out.println("entra1");
                filasel=tblConsultaPlanes.getSelectedRow();
+               
+               
                System.out.println("entra2");
                if (filasel==-1)
                {
@@ -191,9 +203,9 @@ public class ConsultaVariables extends javax.swing.JFrame {
                    System.out.println(idString);
                   
                    //habilitar();
-                   idplanfijo= Integer.valueOf(idString);
-                   System.out.println(idplanfijo);
-                   repFijo.reportePlanFijo(idplanfijo);
+                   idplanVariable= Integer.valueOf(idString);
+                   System.out.println(idplanVariable);
+                   repVariable.reportePlanVariable(idplanVariable);
                }     
            }
         catch (Exception e)
@@ -202,6 +214,36 @@ public class ConsultaVariables extends javax.swing.JFrame {
                 }
         
     }//GEN-LAST:event_jMenuItemImprimirActionPerformed
+
+    private void jMenuItemArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemArticulosActionPerformed
+         // TODO add your handling code here:
+        int filasel;
+        int idplanVariable=0;
+        String idString="";
+        GenerarReportes repVariable= new GenerarReportes(); 
+        //modelo= (DefaultTableModel) tblArticulosVariables.getModel();
+        try
+           {
+               System.out.println("entra1");
+               filasel=tblConsultaPlanes.getSelectedRow();
+               idString=(String)modelo.getValueAt(filasel, 0);;
+               ConsultaArticulos articulosVentana= new ConsultaArticulos();
+               articulosVentana.CargarTablaPlanes(idString);
+               articulosVentana.setExtendedState(JFrame.MAXIMIZED_BOTH);
+               articulosVentana.setVisible(true);
+               
+               System.out.println("entra2");
+               if (filasel==-1)
+               {
+                   System.out.println("entra3");
+                   JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+               }
+               }
+        catch (Exception e)
+                {
+                }
+        
+    }//GEN-LAST:event_jMenuItemArticulosActionPerformed
 
     ///////CLASES GENERALES
     //carga tabla Articulos
@@ -304,6 +346,7 @@ public class ConsultaVariables extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarPlan;
     private javax.swing.JButton btnSalirConsulta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItemArticulos;
     private javax.swing.JMenuItem jMenuItemImprimir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu2;
