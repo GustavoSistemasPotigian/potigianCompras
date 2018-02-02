@@ -24,10 +24,12 @@ public class ConsultaPlanes extends javax.swing.JFrame {
     /**
      * Creates new form ConsultaPlanes
      */
+    //** instancia del modelo tabla**//
     DefaultTableModel modelo;
     public ConsultaPlanes() {
-        initComponents();
         
+        
+        initComponents();     
         CargarTablaPlanes("");
     }
 
@@ -158,7 +160,7 @@ public class ConsultaPlanes extends javax.swing.JFrame {
     private void txtBuscarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarPlanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarPlanActionPerformed
-
+//METODOS DE LOS BOTONES
     private void btnBuscarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPlanActionPerformed
         String valor="";
         valor= txtBuscarPlan.getText();
@@ -171,6 +173,7 @@ public class ConsultaPlanes extends javax.swing.JFrame {
        ConsultaPlanes.this.dispose();
     }//GEN-LAST:event_btnSalirConsultaActionPerformed
 
+    ///METODO PARA IMPRIMIR EL REPORTE SELECCIONADO DE LA TABLA
     private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
         int filasel;
         int idplanfijo=0;
@@ -179,18 +182,17 @@ public class ConsultaPlanes extends javax.swing.JFrame {
         modelo= (DefaultTableModel) tblConsultaPlanes.getModel();
         try
            {
-               System.out.println("entra1");
+               
                filasel=tblConsultaPlanes.getSelectedRow();
-               System.out.println("entra2");
+               
                if (filasel==-1)
                {
-                   System.out.println("entra3");
-                   JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+                     JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
                }
                else
                {
                    //accion="Modificar";
-                   System.out.println("entra4");
+                   
                    idString= (String)modelo.getValueAt(filasel, 0);
                    System.out.println(idString);
                   
@@ -240,7 +242,7 @@ public class ConsultaPlanes extends javax.swing.JFrame {
         {
             Statement st= cn.createStatement();
             ResultSet rs= st.executeQuery(sSQL);
-            
+            ///ASIGNAMOS CADA CAMPO DE LA CONSULTA A CADA REGISTRO DE LA TABLA.
             while (rs.next())
             {
                 registro[0]=rs.getString("Plan_Nro");

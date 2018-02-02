@@ -30,7 +30,7 @@ public class ConsultaArticulos extends javax.swing.JFrame {
         
         CargarTablaPlanes("");
     }
-    
+    ///METODO PARA CARGAR LA TABLA CON LOS DIFERENTES PLANES FIJOS YA CARGADOS
     void CargarTablaPlanes(String valor){
         String sSQL="";
        
@@ -54,7 +54,7 @@ public class ConsultaArticulos extends javax.swing.JFrame {
         {
             Statement st= cn.createStatement();
             ResultSet rs= st.executeQuery(sSQL);
-            
+            //ASIGNACION DE LOS CAMPOS A LOS REGISTROS DE LA TABLA
             while (rs.next())
             {
                 registro[0]=rs.getString("IdPlan");
@@ -149,7 +149,7 @@ public class ConsultaArticulos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/////ACCION DEL BOTON SALIR
     private void btnSalirArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirArticulosActionPerformed
        
         ConsultaArticulos.this.dispose();

@@ -164,7 +164,7 @@ public class ConsultaVariables extends javax.swing.JFrame {
     private void txtBuscarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarPlanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarPlanActionPerformed
-
+///METODOS DE LOS BOTONES BUSCAR Y SALIR
     private void btnBuscarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPlanActionPerformed
        String valor="";
         valor= txtBuscarPlan.getText();
@@ -176,6 +176,7 @@ public class ConsultaVariables extends javax.swing.JFrame {
        ConsultaVariables.this.dispose();
     }//GEN-LAST:event_btnSalirConsultaActionPerformed
 
+    //ACCION DEL CLICK DERECHO POR MENU IMPRIMIR Y VER ARTICULOS SELECCIONADOS
     private void jMenuItemImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImprimirActionPerformed
         // TODO add your handling code here:
         int filasel;
@@ -185,20 +186,18 @@ public class ConsultaVariables extends javax.swing.JFrame {
         modelo= (DefaultTableModel) tblConsultaPlanes.getModel();
         try
            {
-               System.out.println("entra1");
+             ///** GUARDA EL VALOR DEL ORDEN DEL ELEMENTO SELECCIONADO EN LA TABLA
                filasel=tblConsultaPlanes.getSelectedRow();
-               
-               
-               System.out.println("entra2");
+
                if (filasel==-1)
                {
-                   System.out.println("entra3");
+                   ///MENSAJE SI NO SELECCIONA NINGUN REGISTRO
                    JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
                }
                else
-               {
+               {///ESTOS METODOS SI SE AGREGA LA OPCION DE MODIFICAR O ELIMINAR
                    //accion="Modificar";
-                   System.out.println("entra4");
+                  
                    idString= (String)modelo.getValueAt(filasel, 0);
                    System.out.println(idString);
                   
@@ -224,18 +223,16 @@ public class ConsultaVariables extends javax.swing.JFrame {
         //modelo= (DefaultTableModel) tblArticulosVariables.getModel();
         try
            {
-               System.out.println("entra1");
                filasel=tblConsultaPlanes.getSelectedRow();
                idString=(String)modelo.getValueAt(filasel, 0);;
                ConsultaArticulos articulosVentana= new ConsultaArticulos();
                articulosVentana.CargarTablaPlanes(idString);
                articulosVentana.setExtendedState(JFrame.MAXIMIZED_BOTH);
                articulosVentana.setVisible(true);
-               
-               System.out.println("entra2");
+
                if (filasel==-1)
                {
-                   System.out.println("entra3");
+                   //MENSAJE SI NO SELECCIONA NADA
                    JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
                }
                }

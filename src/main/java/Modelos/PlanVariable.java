@@ -421,6 +421,7 @@ public class PlanVariable extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //CLASE PARA LOS BOTONES
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         PlanVariable.this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
@@ -520,7 +521,7 @@ public class PlanVariable extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_btnSeleccionActionPerformed
-
+///**JRADIOBOTTON DE LAS OPCIONES MENSUALES O SEMANALES
     private void jrbMensualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMensualActionPerformed
         if (jrbSemanal.isEnabled()== false){
             jrbSemanal.setEnabled(true);
@@ -541,6 +542,7 @@ public class PlanVariable extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jrbSemanalActionPerformed
 
+    /***ZONA DE TXTFIELD Y JCOMBOX**/
     private void txtFechaDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaDesdeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaDesdeActionPerformed

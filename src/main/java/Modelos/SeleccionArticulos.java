@@ -204,13 +204,7 @@ public class SeleccionArticulos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         
         }
-        
-        
-        
-        
-        
-        
-        
+      
         
     }//GEN-LAST:event_jBaceptarActionPerformed
 

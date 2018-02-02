@@ -545,7 +545,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
         ///PARA INHABILITAR TODOS LOS CAMPOS.-
         inhabilitar();
     }//GEN-LAST:event_btnCancelarActionPerformed
-    ////CLASE PARA CALCULAR QUE TIPO DE IVA APRETO
+    ////CLASE PARA CALCULAR QUE TIPO DE IVA
     String getIVA(){
        String iva="";
          if (rbIVA10.isSelected()== true){
@@ -586,16 +586,11 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
                      resultado= cuota;
                      resultado=(resultado*0.0);
                      monto=String.format("%.2f", resultado);
-                     
-                
+                                    
                 }
                }
-            
-            
             }
-            
-        
-        
+                    
     return monto;}
     
     
@@ -650,7 +645,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
            mensaje="Operación Satisfactoria";
         }
-        /*
+        /*///SI ES QUE SE PIDE PODER MODIFICAR LOS PLANES SE HABILITA.
         else if (accion.equals("Modificar"))
         {
             sSQL="UPDATE articulo " +
@@ -710,13 +705,12 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
+//SE TUVO QUE HACER ESTA CLASE PARA GUARDAR LAS CUOTAS EN UNA ENTIDAD CUOTA. 
+ //PIDEN QUE ALLÁ UN ALARMA PARA QUE DIGA QUE CUOTA SE VENCE O NO.
     private void guardarCuotas(Connection cn)
     {
         String ultimoId="";
         String sSQLid="", sSQL="";
-        
-        
         
         ////Guardamos consulta para ultimo id.
         sSQLid="SELECT LAST_INSERT_ID(idPlan_Descuento) AS ProximoIdAInsertar FROM plan_descuento ORDER BY idPlan_Descuento DESC LIMIT 1";
@@ -741,8 +735,6 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
             pst2.setString(5, ultimoId);
             pst2.executeUpdate();
         }
-        
-        
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -751,6 +743,8 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
     
     
     }
+    
+    ///BOTON PARA GUARDAR EL PLAN FIJO SIN LA OPCION DE ELEGIR ARTICUOLOS
     private void btnSinArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSinArticulosActionPerformed
         //conexión a la bdd
         ConexionMySQL mysql= new ConexionMySQL();
@@ -852,9 +846,6 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
            
             }
             
-            
-            
-            
         } 
         
         catch (SQLException ex) {
@@ -862,6 +853,8 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSinArticulosActionPerformed
 
+    ///CLASES DE LOS CHECK OPTION.
+    
     private void jCheckDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckDescuentoActionPerformed
 
         if (jCheckDescuento.isSelected()==true){
@@ -896,6 +889,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckArticuloActionPerformed
 
+    /// JCOMBOX Y SUS JTEXTFIELD
     private void jcomArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomArticuloActionPerformed
         ConexionMySQL mysql= new ConexionMySQL();
         Connection cn= mysql.Conectar();
@@ -1073,6 +1067,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcomProveedorActionPerformed
 
+    //BOTON CONSULTAS Y NUEVO.
     private void btnConsultasPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasPlanActionPerformed
         ConsultaPlanes ventanaConsulta= new ConsultaPlanes();
         ventanaConsulta.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -1092,7 +1087,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
     private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescuentoActionPerformed
-
+/// CARGA LOS MOTIVOS DE SNC DESCUENTOS
     private void txtMotivoSNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMotivoSNCActionPerformed
         ///realizamos la conexion con la bdd.
 
@@ -1193,6 +1188,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCompradorActionPerformed
 
+    ///JRADIOBOTTON DE LOS IVA 21% Y 10.5%
     private void rbIVA10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbIVA10ActionPerformed
         ///CONDICIONAL PARA QUE BLOQUEE EL BOTÓN DE IVA21%
 
@@ -1377,7 +1373,7 @@ public class PlanDeDescuentoFijo extends javax.swing.JFrame {
         }      
     
     }
-    
+ ///METODO QUE CARGA LA JTABLE CON LAS CUOTAS CALCULADAS   
     private void cargarTablaCuotas()
     {
         String sSQL="";
